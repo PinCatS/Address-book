@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="scripts/hello_alert.js" async></script>
+		<script src="scripts/hello_on_page.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<h1 id="js_greeting"></h1>
+		</header>
+		<main>
+			<form id="myForm" action="">
+				<label for="name">Name</label>
+				<input name="name" id="name" type="text">
+			</form>
+
+			<button onclick="sayGoodbye()">Submit</button>
+		</main>
+
+		<script>
+			function sayGoodbye() {
+				var name = document.getElementById("myForm").elements.namedItem("name").value;
+				var admin = name;
+				alert("Good bye, " + admin + "!");
+			}
+		</script>
+	</body>
+</html>
