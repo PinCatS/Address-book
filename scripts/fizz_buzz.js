@@ -21,14 +21,8 @@ for (var i = 0; i < 100; ++i) {
 	else if ( isDivisibleBy3(i) ) {
 		console.log('Fizz(' + i + ')   <==  ' + isDivisibleBy5(i) + ' ' + isDivisibleBy3(i));
 	}
-	
-}
-
-console.log("if div by 3 and by 5 'FizzBuzz':");
-for (var i = 0; i < 100; ++i) {
-
-	if ( isDivisibleBy5(i) && isDivisibleBy3(i) ) {
+	else if ( isDivisibleBy5(i) && isDivisibleBy3(i) ) {
 		console.log('FizzBuzz(' + i + ')  <==  ' + isDivisibleBy5(i) + ' ' + isDivisibleBy3(i));
 	}
-
+	
 }
