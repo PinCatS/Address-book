@@ -2,48 +2,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<script src="scripts/fizz_buzz.js" async></script>
-		
-		<!-- js for Google SyntaxHighlighter -->
-		<script type="text/javascript" src="scripts/shCore.js"></script>
- 
-		<!-- Adding brush for JavaScript -->
-		<script type="text/javascript" src="css/shBrushJScript.js"></script>
- 
-		<!-- Include styles for emacs theme -->
-		<link href="css/shCoreEmacs.css" rel="stylesheet" type="text/css" />
-		<link href="css/shThemeEmacs.css" rel="stylesheet" type="text/css" />
+		<script src="scripts/homework_3.js" async></script>
 	</head>
 	<body>
-
-		<header>
-			<h1>Lesson 2 homework.</h1>
-		</header>
-
-		<main>
-
-			<h3>Explanation of expression results.</h3>
-
-			<!-- Start highlighting -->
-			<pre class="brush: js">
-				var a = 1, b = 1, c, d;	// a --> 1, b --> 1, c and b are undefined
-
-				c = ++a; // c = 2 => a becomes 2 and then is copied to c
-				d = b++; // d = 1 => b is copied to d and b is increased then; b becomes 2
-				c = ( 2 + ++a );  // c = 5; ++..has higher priority => a is increased (3) and 2 + 3 => 5
-				d = ( 2 + b++ ); // d = 4; b value 2 is red first, added with 2 => 4 and then b => 3
-
-				var a = 2;
-				var x = 1 + ( a *= 2 ); // x = 5; () - higher priority then +, so a => 4 (a = a * 2) and then 1 + 4 => 5
-			</pre>
-
-			<h3>Please look to console log to see <cite>FizzBug</cite> program output.</h3>
-
-		</main>
+		<h1>Look into console to see the results.</h1>
 	</body>
 </html>
- 
-<!-- Finally, to actually run the highlighter, you need to include this JS on your page -->
-<script type="text/javascript">
-     SyntaxHighlighter.all()
-</script>
