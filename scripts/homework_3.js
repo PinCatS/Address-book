@@ -8,17 +8,17 @@ function print_triangle(count, symbol) {
 	}
 }
 
-function chess_board() {
-	var symbols = [ [' ', '#'], ['#', ' '] ];
+function print_chess_board(count, symbol) {
+	var symbols = [ [' ', symbol], [symbol, ' '] ];
 	var out = '';
-	for (var i = 0; i < 8; ++i) {
-		for (var j = 0; j < 8; ++j) {
+	for (var i = 0; i < count; ++i) {
+		for (var j = 0; j < count; ++j) {
 			out += symbols[ i % 2 ][ j % 2 ];
 		}
 		out += '\n';
 	}
-	return out;
+	console.log(out);
 }
 
 print_triangle(7, '#');
-console.log( chess_board() );
+print_chess_board(8, '#');
