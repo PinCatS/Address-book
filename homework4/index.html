@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Look into console to see the results.</h1>
+	<script>
+		"use strict"
+
+		/* Reurns min of two numbers.
+			 if both are equal, returns the first argument.
+			 if no arguments are given, return Infinity
+			 if one of them or both are not a numbers, return Nan
+		*/
+		function min(a, b) {
+			if (arguments.length == 0)	return Infinity;
+
+			if (typeof a !== 'number' || typeof b !== 'number') return NaN;
+
+			return (b < a) ? b : a; 
+		}
+
+		/* countSymbol - returns number of symbol letters in input string 
+			 if no arguments specified, returns Infinity
+		*/
+		function countSymbol(str, symbol) {
+
+			if (arguments.length == 0) return Infinity
+
+			var count = 0;
+			for (var i = 0; i < str.length; ++i) {
+				if (str.charAt(i) === symbol) count++;
+			}
+
+			return count;
+		}
+
+		/* Returns true if input number is even, otherwise returns false 
+			 No args, returns Infinity
+			 Other than number type return Nan
+
+		*/
+		function isEven(n) {
+
+			if (arguments.length == 0) return Infinity;
+
+			if (typeof n !== 'number') return NaN;
+
+			/* if n is negative, convert it to psoitive,
+				 otherwise you will get infinit recursion and 
+				 'stack size exceeded' failure */ 
+			if (n < 0) n *= -1; 
+
+			if (n== 0) return true;
+
+			if (n == 1) return false;
+
+			return isEven(n - 2);
+		}
+
+		console.log(isEven(-1));
+		console.log(isEven(50));
+		console.log(isEven(75));
+	</script>
+	</body>
+</html>
