@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Look into console to see the results.</h1>
+	<script>
+		"use strict"
+
+		/*
+			Converts dec value to hex and
+			adds specified number of 0 paddings
+
+			Returns NaN if d is not a number
+		 */
+		function dec2hex(d, padding) {
+			
+			padding = padding || 2;
+			
+			var hex = Number(d).toString(16); 
+			while (hex.length < padding)
+				hex = '0' + hex;
+
+			return hex;
+		}
+
+		/* 
+			Input: r, g and b - color components - dec value 0 - 255 
+			
+			if component is not specified, set it to 0;
+
+			Returns color in format #hhhhhh, where h is a hex digit
+
+			On failure returns null;
+		*/
+		function rgb2hex(r, g, b) {
+
+			r = r || 0; g = g || 0; b = b || 0; 
+
+			if (typeof r !== 'number' || r < 0 || r > 255) {
+				console.log("Invalid color red component value (0 - 255): " + r);
+				return null;
+			}
+
+			if (typeof g !== 'number' || g < 0 || g > 255) {
+				console.log("Invalid color red component value (0 - 255): " + g);
+				return null;
+			}
+
+			if (typeof b !== 'number' || b < 0 || b > 255) {
+				console.log("Invalid color red component value (0 - 255): " + b);
+				return null;
+			}
+
+			return '#' + dec2hex(r) + dec2hex(g) + dec2hex(b);
+		}
+
+		function dec2obj(d) {
+			
+			var obj = {	hundreds: 0, tens: 0, ones: 0 }
+
+			if (typeof d === 'undefined')
+				return obj;
+
+			if (d < 0 || d > 999) {
+				console.log("Invalid input value (0 - 999): " + d);
+				return null;
+			}
+
+			var obj = {};
+			obj.hundreds = Math.trunc(d / 100);
+			d %= 100; 
+			obj.tens = Math.trunc(d / 10);
+			d %= 10;
+			obj.ones = d;
+
+			return obj;
+		}
+
+		function objectToQueryString(obj) {
+			
+			var result = '';
+			for (var key in obj) {
+				if (result.length != 0) result += '&';
+				result += key + '=' + obj[key];
+			}
+
+			return result;
+		}
+
+		console.log(rgb2hex(255, 8, 64));
+		console.log(dec2obj(967));
+		console.log(objectToQueryString());
+		console.log(objectToQueryString({user: 'Sergey'}));
+		console.log(objectToQueryString({user: 'Sergey', password: 'pass'}));
+		console.log(objectToQueryString({user: 'Sergey', password: 'pass', id: 1}));
+	</script>
+	</body>
+</html>
