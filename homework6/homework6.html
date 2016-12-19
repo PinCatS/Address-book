@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Look into console to see the results.</h1>
+	<script>
+		"use strict"
+
+		/* Returns list according to input array */
+		function arrayToList(arr) {
+
+			if (arr.length == 0)
+				return {};
+
+			if (arr.length == 1)
+				return { value: arr[0], rest: null };
+
+			return { value: arr[0], rest: arrayToList(arr.slice(1, arr.length)) };
+		}
+
+		/* return array according to input list */
+		function listToArray(list) {
+			var arr = [];
+			var cur = list;
+			while (cur != null && cur.value !== undefined) {
+				arr.push(cur.value);
+				cur = cur.rest; 
+			}
+
+			return arr;
+		}
+
+		/* Testing list-array conversion functions */
+		console.log('Testing list-array conversion functions:');
+		
+		console.log(arrayToList([]));
+		console.log(arrayToList([1]));
+		
+		var list = arrayToList([1, 2, 3]);
+		console.log(list);
+		console.log(listToArray(list));
+		console.log(listToArray({}));
+
+		/* Returns new reversed array - slow version */
+		function reverseArray(arr) {
+			var reverse_arr = [];
+			for (var i = 0; i < arr.length; ++i)
+				reverse_arr.unshift(arr[i]);	// slow way
+
+			return reverse_arr;
+		}
+
+		/* Returns new reversed array - faster version */
+		function reverseArray2(arr) {
+			var reverse_arr = [];
+			for (var i = 0; i < arr.length; ++i)
+				reverse_arr[i] = arr[arr.length - 1 - i];	// faster way
+
+			return reverse_arr;
+		}
+
+		/* Modifies input array by placing its elements in reverse order */
+		function reverseInPlace(arr) {
+			for (var i = 0; i < arr.length/2; ++i) {
+				var tmp = arr[i];
+				arr[i] = arr[arr.length - 1 - i];
+				arr[arr.length - 1 - i] = tmp;
+			}
+		}
+
+		/* Testing array reverse functions*/
+		console.log('Testing array reverse functions:');
+		console.log(reverseArray2([]));
+		var arr = [1, 2, 3];
+		console.log(reverseArray(arr));
+		console.log(reverseArray2(arr));
+		arr.push(4);
+		console.log(reverseArray2(arr));
+
+		arr = [1, 2, 3];
+		reverseInPlace(arr);
+		console.log(arr);
+		reverseInPlace(arr);
+		console.log(arr);
+		arr = []
+		reverseInPlace(arr);
+		console.log(arr);
+
+		/* Builds new object based on input object and picked keys */
+		function pick(obj, keys) {
+			
+			/* create helper key map */
+			var store = {};
+			for (var key in obj)
+				store[key] = true;
+
+			var new_obj = {};
+			keys.forEach(function(key) {
+				if (store[key])
+					new_obj[key] = obj[key];
+			});
+
+			return new_obj;
+		}
+
+		var user = {
+			name: 'Sergey',
+			age: 30,
+			email: 'sergey@gmail.com',
+			friends: ['Sveta', 'Artem']
+		}
+
+		/* Testing */
+		console.log('Testing pick() function:');
+		console.log(pick(user, ['name']));
+		console.log(pick(user, ['name', 'second-name']));
+		console.log(pick(user, ['name', 'friends']));
+	</script>
+	</body>
+</html>
