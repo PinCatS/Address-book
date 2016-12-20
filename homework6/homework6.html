@@ -43,6 +43,35 @@
 		console.log(listToArray(list));
 		console.log(listToArray({}));
 
+		/* returns new list with prepended element */
+		function prepend(list, elem) {
+			return { value: elem, rest: list };
+		}
+
+		/* return nth element or undefined. 0 - based index */
+		function nth(list, pos) {
+			if (list === null || pos < 0)
+				return undefined;
+
+			if (pos == 0)
+				return list.value;
+
+			return nth(list.rest, --pos);
+		}
+
+		/* Testing prepend and nth functions */
+		console.log('Testing prepend and nth functions:');
+		var list = arrayToList([ 1, 2, 3]);
+		console.log(list);
+		list = prepend(list, 0);
+		console.log(list);
+		console.log(nth(list, 0));
+		console.log(nth(list, 1));
+		console.log(nth(list, 2));
+		console.log(nth(list, 3));
+		console.log(nth(list, 4));
+		console.log(nth(list, -1));
+
 		/* Returns new reversed array - slow version */
 		function reverseArray(arr) {
 			var reverse_arr = [];
